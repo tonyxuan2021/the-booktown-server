@@ -8,7 +8,7 @@ router.use((req, res, next) => {
 
   const stripe = require("stripe")("sk_test_51L0HVnAA6lOKoR8GoU1iEI0wyaCryNQi7afiSkGR050ukQ5R94OcG7yU2x3kvK9RyWUvMptsoPhMlTAqohFgvGRL004FrlIV0z");
 
-  router.post("/payment", (req, res) => {
+  router.post("/", (req, res) => {
     const { product, token } = req.body;
     console.log("PRODUCT", product);
     console.log("PRICE", product.price);

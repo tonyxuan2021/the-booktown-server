@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
     id: uniqid(),
     name: req.body.name,
     price: req.body.price,
-    filepathUrl: `http://localhost:5050/${req.body.filepathUrl}`
+    image: `http://localhost:5050/${req.body.filepathUrl}`
   };
 
   booksContent.unshift(newBook);
