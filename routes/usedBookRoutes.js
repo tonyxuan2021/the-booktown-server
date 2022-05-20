@@ -1,5 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const usedBookController = require('../controllers/usedBookController');
+
+router.route('/').get(usedBookController.index);
+
 const fs = require("fs");
 // var uniqid = require("uniqid");
 
