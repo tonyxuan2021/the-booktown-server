@@ -1,5 +1,9 @@
 // Update with your config settings.
 
+require("dotenv").config();
+
+
+
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
@@ -9,7 +13,7 @@
     connection: {
       host: '127.0.0.1',
       user: 'root',
-      password: 'Yyh779955',
+      password: process.env.KNEXPASSWORD,
       database: 'booktown_cda',
       charset: 'utf8',
     },

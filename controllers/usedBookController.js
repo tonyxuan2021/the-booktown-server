@@ -3,6 +3,7 @@ const knex = require('knex')(require('../knexfile').development);
 exports.index = (_req, res) => {
   knex('usedbook')
     .then((data) => {
+        // sorting happens by timestamps
       res.status(200).json(data);
     })
     .catch((err) =>
