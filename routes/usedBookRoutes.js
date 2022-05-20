@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
-var uniqid = require("uniqid");
+// var uniqid = require("uniqid");
 
 router.use((req, res, next) => {
   console.log("Notes Router Incoming Request");
@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
   const booksContent = readBook();
 
   const newBook = {
-    id: uniqid(),
+    // id: uniqid(),
     name: req.body.name,
     price: req.body.price,
     image: `http://localhost:5050/${req.body.filepathUrl}`
