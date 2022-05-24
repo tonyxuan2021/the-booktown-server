@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const knex = require("knex")(require("../knexfile.js").development)
-const usedBookController = require('../controllers/usedBookController');
+const knex = require("knex")(require("../knexfile.js").development);
+const usedBookController = require("../controllers/usedBookController");
 
-router.route('/').get(usedBookController.index);
+router.route("/").get(usedBookController.index);
 
 const fs = require("fs");
 // var uniqid = require("uniqid");
@@ -13,21 +13,6 @@ router.use((req, res, next) => {
   next();
 });
 
-// const readBook = () => {
-//   const booksContent = fs.readFileSync("./data/books.json");
-//   return JSON.parse(booksContent);
-// };
-
-// const writeBook = (data) => {
-//   const stringifiedData = JSON.stringify(data);
-//   fs.writeFileSync("./data/books.json", stringifiedData);
-// };
-
-// router.get("/", (req, res) => {
-//   const booksContent = readBook();
-//   res.status(200).json(booksContent);
-// });
-
 router.post("/", (req, res) => {
   // const booksContent = readBook();
 
@@ -35,25 +20,37 @@ router.post("/", (req, res) => {
     // id: uniqid(),
     name: req.body.name,
     price: req.body.price,
-    author:"default",
-    image: `http://localhost:5050/${req.body.filepathUrl}`
+    author: "default",
+    image: `http://localhost:5050/${req.body.filepathUrl}`,
   };
 
-  knex("usedbook").insert(newBook).then(()=> {
-    res.status(201).json(newBook)
-  }).catch((err)=> {
-    res.status(400).json(err)
-  })
+  knex("usedbook")
+    .insert(newBook)
+    .then(() => {
+      res.status(201).json(newBook);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
 
-  // booksContent.unshift(newBook);
-
-  // writeBook(booksContent);
-
+router.delete("/:bookId", (req, res) => {
+  knex("usedbook")
+    .where({
+      id: req.params.bookId,
+    })
+    .del()
+    .then(() => {
+      res.status(204).send(`book with id: ${req.params.id} has been deleted`);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
 });
 
 router.post("/image", (req, res) => {
   console.log(req.files);
-  res.status(201).send("test done")
+  res.status(201).send("test done");
 });
 
 module.exports = router;
