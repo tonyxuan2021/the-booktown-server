@@ -20,7 +20,7 @@ router.post("/", (req, res) => {
     // id: uniqid(),
     name: req.body.name,
     price: req.body.price,
-    author: "default",
+    author: "",
     image: `http://localhost:5050/${req.body.filepathUrl}`,
   };
 
