@@ -6,7 +6,6 @@ const usedBookController = require("../controllers/usedBookController");
 router.route("/").get(usedBookController.index);
 
 const fs = require("fs");
-// var uniqid = require("uniqid");
 
 router.use((req, res, next) => {
   console.log("Notes Router Incoming Request");
@@ -14,10 +13,8 @@ router.use((req, res, next) => {
 });
 
 router.post("/", (req, res) => {
-  // const booksContent = readBook();
 
   const newBook = {
-    // id: uniqid(),
     name: req.body.name,
     price: req.body.price,
     author: "",
