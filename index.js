@@ -1,4 +1,5 @@
 const express = require("express");
+let PORT = process.env.PORT ||5050
 const cors = require("cors");
 let uniqid = require("uniqid");
 const fileUpload = require("express-fileupload");
@@ -22,4 +23,4 @@ app.use('/usedbook',usedBookRoute);
 
 
 // Listen
-app.listen(5050);
+app.listen(PORT);
